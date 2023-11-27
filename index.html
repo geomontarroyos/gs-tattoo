@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>GS Tattoo</title>
+      <link rel="stylesheet" href="/css/style.css">
+      <link rel="apple-touch-icon" href="img/cav.512.png">
+      <link rel="manifest" href="manifest.json">
+      <link rel="icon" href="favicon.png">
+      <meta name="theme-color" content="white"/>
+    </head>
+
+<body>
+  
+<div class="container">
+  <form>
+    <div class="row">
+      <h4>Agendamento</h4>
+      <div class="input-group input-group-icon">
+        <input type="text" placeholder="Nome"/>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="email" placeholder="Email"/>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="tel" placeholder="Telefone"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-half">
+        <h4>Data</h4>
+        <div class="input-group">
+          <div class="col-third">
+            <input type="text" placeholder="DD"/>
+          </div>
+          <div class="col-third">
+            <input type="text" placeholder="MM"/>
+          </div>
+          <div class="col-third">
+            <input type="text" placeholder="YYYY"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+        <h4>Escolha um horário para sua sessão:</h4>
+        <input type="time" id="appt" name="appt" min="09:00" max="18:00"/>
+    </div><br/>
+    <div class="row">
+      <div class="input-group">
+        <button id="env" type="submit">Enviar</button>
+        <button id="limp" type="reset">Limpar</button>
+      </div>
+
+    <div class="row">
+      <h4>Termos e Condições</h4>
+      <div class="input-group">
+        <input id="terms" type="checkbox"/>
+        <label for="terms">Em caso de falta, será cobrado uma multa 50% do valor da tatuagem.</label>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
