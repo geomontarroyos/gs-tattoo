@@ -1,3 +1,4 @@
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', async() => {
     try {
@@ -43,3 +44,21 @@ cameraTrigger.onclick = function () {
 };
 //carrega imagem de camera quando a janela carregar
 window.addEventListener("load", cameraStart, false);
+
+ // Função para converter uma imagem em dados e armazenar no Pridebites IndexedDB
+ async function salvarImagemNoIndexedDB(imagem) {
+    try {
+      // Criar uma instância do Pridebites IndexedDB
+      const indexedDB = new PridebitesIndexedDB('sua_base_de_dados', 'sua_loja');
+
+      // Converter a imagem para dados
+      const dadosImagem = await converterImagemParaDados(imagem);
+
+      // Armazenar os dados no IndexedDB
+      await indexedDB.adicionar('chave_unica', { imagem: dadosImagem });
+
+      console.log('Imagem salva no IndexedDB com sucesso!');
+    } catch (error) {
+      console.error('Erro ao salvar a imagem no IndexedDB:', error);
+    }
+  }
