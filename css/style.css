@@ -11,7 +11,7 @@ body {
   color: black;
   background-color: black;
 }
-h4 {
+h3 {
   color: black;
 }
 input,
@@ -120,43 +120,7 @@ select:active {
 .input-group:after {
   clear: both;
 }
-.input-group-icon {
-  position: relative;
-}
-.input-group-icon input {
-  padding-left: 4.4em;
-}
-.input-group-icon .input-icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3.4em;
-  height: 3.4em;
-  line-height: 3.4em;
-  text-align: center;
-  pointer-events: none;
-}
-.input-group-icon .input-icon:after {
-  position: absolute;
-  top: 0.6em;
-  bottom: 0.6em;
-  left: 3.4em;
-  display: block;
-  border-right: 1px solid #e5e5e5;
-  content: "";
-  -webkit-transition: 0.35s ease-in-out;
-  -moz-transition: 0.35s ease-in-out;
-  -o-transition: 0.35s ease-in-out;
-  transition: 0.35s ease-in-out;
-  transition: all 0.35s ease-in-out;
-}
-.input-group-icon .input-icon i {
-  -webkit-transition: 0.35s ease-in-out;
-  -moz-transition: 0.35s ease-in-out;
-  -o-transition: 0.35s ease-in-out;
-  transition: 0.35s ease-in-out;
-  transition: all 0.35s ease-in-out;
-}
+
 .container {
   max-width: 38em;
   padding: 1em 3em 2em 3em;
@@ -209,4 +173,15 @@ label {
 input,
 label {
   margin: 0.4rem 0;
+}
+
+#env, #limp, #tirar{
+  background-color: black;
+  color: white;
+  width: 60px;
+  height: 50px;
+}
+a{
+  text-decoration:none;
+  color: white;
 }
