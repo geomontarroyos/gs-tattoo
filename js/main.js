@@ -45,20 +45,55 @@ cameraTrigger.onclick = function () {
 //carrega imagem de camera quando a janela carregar
 window.addEventListener("load", cameraStart, false);
 
- // Função para converter uma imagem em dados e armazenar no Pridebites IndexedDB
- async function salvarImagemNoIndexedDB(imagem) {
-    try {
-      // Criar uma instância do Pridebites IndexedDB
-      const indexedDB = new PridebitesIndexedDB('sua_base_de_dados', 'sua_loja');
+//banco
+var request = indexedDB.open('BancoDeDados', 1);
 
-      // Converter a imagem para dados
-      const dadosImagem = await converterImagemParaDados(imagem);
+request.onupgradeneeded = function(event) {
+    var db = event.target.result;
+    var objectStore = db.createObjectStore('Imagens', { keyPath: 'id', autoIncrement:true });
+};
 
-      // Armazenar os dados no IndexedDB
-      await indexedDB.adicionar('chave_unica', { imagem: dadosImagem });
+//Converta a imagem
+function convertImageToBase64(imageUrl, callback) {
+  var img = new Image();
+  img.crossOrigin = 'Anonymous';
+  img.onload = function() {
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      var dataURL = canvas.toDataURL('image/png');
+      callback(dataURL);
+  };
+  img.src = imageUrl;
+}
 
-      console.log('Imagem salva no IndexedDB com sucesso!');
-    } catch (error) {
-      console.error('Erro ao salvar a imagem no IndexedDB:', error);
-    }
-  }
+
+//armazenando
+function storeImageInDB(imageUrl) {
+  convertImageToBase64(imageUrl, function(base64Image) {
+      var request = indexedDB.open('BancoDeDados', 1);
+
+      request.onsuccess = function(event) {
+          var db = event.target.result;
+          var transaction = db.transaction(['Imagens'], 'readwrite');
+          var objectStore = transaction.objectStore('Imagens');
+
+          var imageData = {
+              data: base64Image,
+              timestamp: new Date().getTime()
+          };
+
+          var requestAdd = objectStore.add(imageData);
+
+          requestAdd.onsuccess = function(event) {
+              console.log('Imagem armazenada com sucesso no IndexedDB.');
+          };
+
+          requestAdd.onerror = function(event) {
+              console.error('Erro ao armazenar a imagem no IndexedDB.');
+          };
+      };
+  });
+}
