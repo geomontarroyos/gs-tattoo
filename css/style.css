@@ -225,3 +225,7 @@ a{
   transform: scaleX(-1);
   filter: FlioH;
 }
+.item{
+ background-color: white;
+ text-align: center;
+}

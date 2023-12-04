@@ -148,7 +148,7 @@ function limparCampos() {
     document.getElementById("tel").value = '';
     document.getElementById("time").value = '';
     document.getElementById("foto_usuario").value = '';
-    document.getElementById("fototirada").value = '';
+   // document.getElementById("fototirada").value = '';
 }
 
 function listagem(text){
