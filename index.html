@@ -9,6 +9,7 @@
       <link rel="manifest" href="manifest.json">
       <link rel="icon" href="favicon.png">
       <meta name="theme-color" content="white"/>
+      <script type="module" src="js/db.js"></script>
     </head>
 
 <body>
@@ -18,13 +19,13 @@
     <div class="row">
       <h1>Agendamento</h1>
       <div class="input-group">
-        <input type="text" placeholder="Nome" required/>
+        <input type="text" id="nome" placeholder="Nome" required/>
       </div>
       <div class="input-group">
-        <input type="email" placeholder="Email" required/>
+        <input  id="email" type="email" placeholder="Email" required/>
       </div>
       <div class="input-group">
-        <input type="tel" placeholder="Telefone" required/>
+        <input id="tel"  type="tel" placeholder="Telefone" required/>
       </div>
     </div>
     <div class="row">
@@ -45,16 +46,13 @@
     </div>
     <div>
         <h3>Escolha um horário para sua sessão:</h3>
-        <input type="time" id="appt" name="appt" min="09:00" max="18:00" required/>
+        <input type="time" id="time" name="time" min="09:00" max="18:00" required/>
     </div><br/>
 
     <label> Foto Tatuagem</label>
     <input type="file" name="foto_usuario" id="foto_usuario" required>
 
     <h3>Tire uma foto da parte do corpo a ser tatuada:</h3>
-    <div class="input-group">
-      <input type="text" placeholder="Digite aqui" required/>
-    </div>
     <div class="row">
       <div class="input-group">
         <button id="tirar"><a href="tirarfoto.html">Tirar</a></button>
@@ -71,12 +69,14 @@
 
     <div class="row">
       <div class="input-group">
-        <button id="env" type="submit">Enviar</button>
+        <button id="btnCadastro" type="submit">Enviar</button>
         <button id="limp" type="reset">Limpar</button>
+        <button id="btnCarregar">Buscar</button>
       </div>
-
   </form>
 </div>
+<div id="resultados"></div>
+<script type="module" src="js/main.js"></script>
 
 </body>
 </html>
