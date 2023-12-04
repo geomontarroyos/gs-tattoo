@@ -9,6 +9,7 @@
       <link rel="manifest" href="manifest.json">
       <link rel="icon" href="favicon.png">
       <meta name="theme-color" content="white"/>
+      <script src="js/main.js" type="module"></script>
     </head>
 <body>
   
@@ -50,10 +51,25 @@
     <input type="file" name="foto_usuario" id="foto_usuario" required>
 
     <h3>Tire uma foto da parte do corpo a ser tatuada:</h3>
-    <div class="row">
-      <div class="input-group">
-        <button id="tirar"><a href="tirarfoto.html">Tirar</a></button>
-      </div>
+   
+<div>
+    <main id="camera">
+      <!--Camera sensor (lente)-->
+      <canvas id="camera--sensor"></canvas>
+      <!--Camera view (visualização)-->
+      <video id="camera--view" autoplay playsinline></video>
+      <!--Camera output-->
+      <img src="//:0" alt="" id="camera--output">
+      <!--Camera botão para tirar foto--><br/>
+   <div class="bt-container">
+      <button id="camera--trigger" id="fototirada"><img src="/img/tirar.png" alt="" height="40%" width="40%"></button>
+      
+      <button id="camera--verso"><img src="/img/trocar.png" alt="" height="40%" width="40%"></button>
+      
+   </div>
+    </main>
+
+  </div>
 
 <br/>
 

@@ -49,6 +49,7 @@ async function buscarTodosDados(){
                     <p>${dado.tel}</p>
                     <p>${dado.time}</p>
                     <p>${dado.foto_usuario}</p>
+                    <p>${dado.fototirada}</p>
                    </div>`
         });
         listagem(divLista.join(' '));
@@ -61,10 +62,11 @@ async function adicionarDados() {
     let tel = document.getElementById("tel").value;
     let time = document.getElementById("time").value;
     let foto_usuario = document.getElementById("foto_usuario").value;
+    let fototirada = document.getElementById("fototirada").value;
     const tx = await db.transaction('dado', 'readwrite')
     const store = tx.objectStore('dado');
     try {
-        await store.add({ nome: nome, email: email, tel: tel, time: time, foto_usuario:foto_usuario});
+        await store.add({ nome: nome, email: email, tel: tel, time: time, foto_usuario:foto_usuario, fototirada:fototirada});
         await tx.done;
         limparCampos();
         console.log('Registro adicionado com sucesso!');
@@ -81,6 +83,7 @@ function limparCampos() {
     document.getElementById("tel").value = '';
     document.getElementById("time").value = '';
     document.getElementById("foto_usuario").value = '';
+    document.getElementById("fototirada").value = '';
 }
 
 function listagem(text){
@@ -110,6 +113,7 @@ async function buscarNome() {
                     <p>${dado.tel}</p>
                     <p>${dado.time}</p>
                     <p>${dado.foto_usuario}</p>
+                    <p>${dado.fototirada}</p>
                 </div>`;
             listagem(divDado);
         } else {
