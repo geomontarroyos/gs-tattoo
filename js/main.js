@@ -63,30 +63,3 @@ function convertImageToBase64(imageUrl, callback) {
 }
 
 
-//armazenando
-function storeImageInDB(imageUrl) {
-  convertImageToBase64(imageUrl, function(base64Image) {
-      var request = indexedDB.open('BancoDeDados', 1);
-
-      request.onsuccess = function(event) {
-          var db = event.target.result;
-          var transaction = db.transaction(['Imagens'], 'readwrite');
-          var objectStore = transaction.objectStore('Imagens');
-
-          var imageData = {
-              data: base64Image,
-              timestamp: new Date().getTime()
-          };
-
-          var requestAdd = objectStore.add(imageData);
-
-          requestAdd.onsuccess = function(event) {
-              console.log('Imagem armazenada com sucesso no IndexedDB.');
-          };
-
-          requestAdd.onerror = function(event) {
-              console.error('Erro ao armazenar a imagem no IndexedDB.');
-          };
-      };
-  });
-}

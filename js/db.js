@@ -28,20 +28,20 @@ window.addEventListener('DOMContentLoaded', async event =>{
     criarDB();
        //* document.getElementById("input");*//
     document.getElementById('btnCadastro').addEventListener('click', adicionarDados);
-    document.getElementById('btnCarregar').addEventListener('click', buscarTodasAnotacoes);
+    document.getElementById('btnCarregar').addEventListener('click', buscarTodosDados);
     document.getElementById("btnBuscar").addEventListener("click", buscarNome);
 
 });
 
-async function buscarTodasAnotacoes(){
+async function buscarTodosDados(){
     if(db == undefined){
         console.log("O banco de dados está fechado.");
     }
     const tx = await db.transaction('Dados', 'readonly');
     const store = await tx.objectStore('Dados');
-    const anotacoes = await store.getAll();
-    if(anotacoes){
-        const divLista = anotacoes.map(Dados => {
+    const Dados = await store.getAll();
+    if(Dados){
+        const divLista = Dados.map(Dados => {
             return `<div class="item">
                     <h1>Cliente</h1>
                     <p>${Dados.nome}</p>
@@ -49,6 +49,7 @@ async function buscarTodasAnotacoes(){
                     <p>${Dados.tel}</p>
                     <p>${Dados.time}</p>
                     <p>${Dados.foto_usuario}</p>
+                    <p>${Dados.fototirada}</p>
                    </div>`
         });
         listagem(divLista.join(' '));
@@ -61,10 +62,11 @@ async function adicionarDados() {
     let tel = document.getElementById("tel").value;
     let time = document.getElementById("time").value;
     let foto_usuario = document.getElementById("foto_usuario").value;
+    let fototirada = document.getElementById("fototirada").value;
     const tx = await db.transaction('Dados', 'readwrite')
     const store = tx.objectStore('Dados');
     try {
-        await store.add({ nome: nome, email: email, tel: tel, time: time, foto_usuario:foto_usuario });
+        await store.add({ nome: nome, email: email, tel: tel, time: time, foto_usuario:foto_usuario, fototirada: fototirada  });
         await tx.done;
         limparCampos();
         console.log('Registro adicionado com sucesso!');
@@ -81,6 +83,7 @@ function limparCampos() {
     document.getElementById("tel").value = '';
     document.getElementById("time").value = '';
     document.getElementById("foto_usuario").value = '';
+    document.getElementById("fototirada").value = '';
     document.getElementById('buscar').value = '';
 }
 
@@ -106,10 +109,12 @@ async function buscarNome() {
             const divDados = `
                 <div class="item">
                     <h1>Cliente</h1>
-                    <p>${Dados.titulo}</p>
-                    <p>${Dados.data} </p>
-                    <p>${Dados.categoria}</p>
-                    <p>${Dados.descricao}</p>
+                    <p>${Dados.nome}</p>
+                    <p>${Dados.email} </p>
+                    <p>${Dados.tel}</p>
+                    <p>${Dados.time}</p>
+                    <p>${Dados.foto_usuario}</p>
+                    <p>${Dados.fototirada}</p>
                 </div>`;
             listagem(divDados);
         } else {

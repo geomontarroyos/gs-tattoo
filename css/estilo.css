@@ -16,21 +16,6 @@ html, body{
     filter: FlioH;
 }
 
-#camera--trigger{
-    width: 200px;
-    background-color: rgb(255, 255, 255);
-    color: white;
-    font-size: 16px;
-    border-radius: 30px;
-    border: none;
-    padding: 15px 20px;
-    text-align: center;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
-    position: fixed;
-    bottom: 30px;
-    left: calc(50% - 100px);
-}
-
 .taken{
     height: 100px!important;
     width: 100px!important;
@@ -42,32 +27,23 @@ html, body{
     z-index: 2;
 }
 
-#camera--verso{
-    width: 200px;
-    background-color: rgb(255, 255, 255);
-    color: white;
-    font-size: 16px;
-    border-radius: 30px;
-    border: none;
-    padding: 15px 20px;
-    text-align: center;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
-    position: fixed;
-    bottom: 100px;
-    left: calc(50% - 100px);
-}
+.bt-container { 
+    text-align: center; 
+    padding: 65% 0% 0% 0%;
 
-#galeria{
-    width: 200px;
-    background-color: rgb(255, 255, 255);
-    color: white;
-    font-size: 16px;
-    border-radius: 30px;
-    border: none;
-    padding: 15px 20px;
-    text-align: center;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
-    position: fixed;
-    bottom: 30px;
-    left: calc(50% - 100px);
-}
+  }
+ 
+ #camera--trigger, #camera--verso, #voltar {
+   border: 0;
+   width: 60px;
+   height: 60px;
+   display: inline-block;
+   margin: 10px;
+   cursor: pointer;
+   border-radius: 30px;
+   background-color: rgb(255, 255, 255);
+   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+   vertical-align: middle;
+   position: relative;
+ }
+
