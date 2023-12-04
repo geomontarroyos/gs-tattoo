@@ -9,7 +9,11 @@ body {
   font-family: "Open Sans", "Helvetica Neue";
   font-size: 15px;
   color: black;
-  background-color: black;
+  background-image: url("https://s3.amazonaws.com/img.iluria.com/product/75637C/1234754/450xN.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 h3 {
   color: black;
