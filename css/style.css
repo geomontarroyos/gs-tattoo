@@ -191,12 +191,12 @@ a{
 }
 #buscarT, #btnBuscar {
   display: inline-block;
-  vertical-align: middle; /* Alinha verticalmente no centro */
+  vertical-align: middle; 
 }
 
 #buscarT {
-  margin-right: 10px; /* Adiciona um espaçamento entre os elementos */
+  margin-right: 10px; 
 }
 #btnBuscar img {
-  vertical-align: middle; /* Ajusta a imagem para alinhar verticalmente no centro */
+  vertical-align: middle; 
 }
