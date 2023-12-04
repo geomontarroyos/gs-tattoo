@@ -81,7 +81,6 @@ function limparCampos() {
     document.getElementById("tel").value = '';
     document.getElementById("time").value = '';
     document.getElementById("foto_usuario").value = '';
-    document.getElementById('buscar').value = '';
 }
 
 function listagem(text){
