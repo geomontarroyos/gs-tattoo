@@ -19,8 +19,7 @@ const cameraView = document.querySelector("#camera--view"),
   cameraOutput = document.querySelector("#camera--output"),
   cameraTrigger = document.querySelector("#camera--trigger"),
   cameraSensor = document.querySelector("#camera--sensor"),
-  cameraVerso = document.querySelector("#camera--verso"),
-  galeria = document.querySelector("#galeria")
+  cameraVerso = document.querySelector("#camera--verso")
 
 
 //Estabelecendo o acesso a camera e inicializando a visualização
