@@ -8,13 +8,13 @@ async function criarDB(){
                 switch  (oldVersion) {
                     case 0:
                     case 1:
-                        const store = db.createObjectStore('Dados', {
+                        const store = db.createObjectStore('dados', {
                             keyPath: 'nome'  //* A propriedade nome será o campo chave *//
 
                         });
                     //* Criando um indice id na store, deve estar contido no objeto do banco. *//
                         store.createIndex('id', 'id');
-                        console.log("banco de dados criado!");
+                        console.log("Banco de dados criado!");
                 }
             }
         });
@@ -37,19 +37,19 @@ async function buscarTodosDados(){
     if(db == undefined){
         console.log("O banco de dados está fechado.");
     }
-    const tx = await db.transaction('Dados', 'readonly');
-    const store = await tx.objectStore('Dados');
-    const Dados = await store.getAll();
-    if(Dados){
-        const divLista = Dados.map(Dados => {
+    const tx = await db.transaction('dado', 'readonly');
+    const store = await tx.objectStore('dado');
+    const dados = await store.getAll();
+    if(dados){
+        const divLista = dados.map(dado => {
             return `<div class="item">
                     <h1>Cliente</h1>
-                    <p>${Dados.nome}</p>
-                    <p>${Dados.email} </p>
-                    <p>${Dados.tel}</p>
-                    <p>${Dados.time}</p>
-                    <p>${Dados.foto_usuario}</p>
-                    <p>${Dados.fototirada}</p>
+                    <p>${dado.nome}</p>
+                    <p>${dado.email} </p>
+                    <p>${dado.tel}</p>
+                    <p>${dado.time}</p>
+                    <p>${dado.foto_usuario}</p>
+                    <p>${dado.fototirada}</p>
                    </div>`
         });
         listagem(divLista.join(' '));
@@ -63,10 +63,10 @@ async function adicionarDados() {
     let time = document.getElementById("time").value;
     let foto_usuario = document.getElementById("foto_usuario").value;
     let fototirada = document.getElementById("fototirada").value;
-    const tx = await db.transaction('Dados', 'readwrite')
-    const store = tx.objectStore('Dados');
+    const tx = await db.transaction('dado', 'readwrite')
+    const store = tx.objectStore('dado');
     try {
-        await store.add({ nome: nome, email: email, tel: tel, time: time, foto_usuario:foto_usuario, fototirada: fototirada  });
+        await store.add({ nome: nome, email: email, tel: tel, time: time, foto_usuario:foto_usuario});
         await tx.done;
         limparCampos();
         console.log('Registro adicionado com sucesso!');
@@ -92,8 +92,8 @@ function listagem(text){
 }
 
 async function buscarNome() {
-    const buscarT = document.getElementById("buscarN").value;
-    if (!buscarT) {
+    const buscarN = document.getElementById("buscarN").value;
+    if (!buscarN) {
         console.log('Insira um nome');
         return;
     }
@@ -101,22 +101,22 @@ async function buscarNome() {
     if (db == undefined) {
         console.log("O banco de dados está fechado.");
     }
-    const tx = await db.transaction('Dados', 'readonly');
-    const store = await tx.objectStore('Dados');
+    const tx = await db.transaction('dado', 'readonly');
+    const store = await tx.objectStore('dado');
     try {
-        const Dados = await store.get(buscarT);
-        if (Dados) {
-            const divDados = `
+        const dado = await store.get(buscarNome);
+        if (dado) {
+            const divDado = `
                 <div class="item">
                     <h1>Cliente</h1>
-                    <p>${Dados.nome}</p>
-                    <p>${Dados.email} </p>
-                    <p>${Dados.tel}</p>
-                    <p>${Dados.time}</p>
-                    <p>${Dados.foto_usuario}</p>
-                    <p>${Dados.fototirada}</p>
+                    <p>${dado.nome}</p>
+                    <p>${dado.email} </p>
+                    <p>${dado.tel}</p>
+                    <p>${dado.time}</p>
+                    <p>${dado.foto_usuario}</p>
+                    <p>${dado.fototirada}</p>
                 </div>`;
-            listagem(divDados);
+            listagem(divDado);
         } else {
             console.log(`Cliente com nome "${buscarN}" não encontrada🤔`);
         }

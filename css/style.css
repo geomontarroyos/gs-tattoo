@@ -189,3 +189,14 @@ a{
   text-decoration:none;
   color: white;
 }
+#buscarT, #btnBuscar {
+  display: inline-block;
+  vertical-align: middle; /* Alinha verticalmente no centro */
+}
+
+#buscarT {
+  margin-right: 10px; /* Adiciona um espaçamento entre os elementos */
+}
+#btnBuscar img {
+  vertical-align: middle; /* Ajusta a imagem para alinhar verticalmente no centro */
+}
