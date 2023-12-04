@@ -220,3 +220,8 @@ a{
  vertical-align: middle;
  position: relative;
 }
+
+#camera--view, #camera--sensor, #camera--output{
+  transform: scaleX(-1);
+  filter: FlioH;
+}
