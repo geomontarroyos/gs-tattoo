@@ -45,13 +45,6 @@ cameraTrigger.onclick = function () {
 //carrega imagem de camera quando a janela carregar
 window.addEventListener("load", cameraStart, false);
 
-//banco
-var request = indexedDB.open('BancoDeDados', 1);
-
-request.onupgradeneeded = function(event) {
-    var db = event.target.result;
-    var objectStore = db.createObjectStore('Imagens', { keyPath: 'id', autoIncrement:true });
-};
 
 //Converta a imagem
 function convertImageToBase64(imageUrl, callback) {

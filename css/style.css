@@ -175,7 +175,7 @@ label {
   margin: 0.4rem 0;
 }
 
-#btnCadastro, #limp, #tirar, #btnCarregar{
+#btnCadastro, #limp, #tirar, #btnCarregar, #btnBuscar{
   background-color: black;
   color: white;
   width: 60px;

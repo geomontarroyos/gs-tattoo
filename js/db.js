@@ -3,7 +3,7 @@ import { openDB } from "idb";
 let db;
 async function criarDB(){
     try {
-        db = await openDB('banco', 1, {
+        db = await openDB('banco', 2, {
             upgrade(db, oldVersion, newVersion, transaction){
                 switch  (oldVersion) {
                     case 0:
@@ -29,6 +29,8 @@ window.addEventListener('DOMContentLoaded', async event =>{
        //* document.getElementById("input");*//
     document.getElementById('btnCadastro').addEventListener('click', adicionarDados);
     document.getElementById('btnCarregar').addEventListener('click', buscarTodasAnotacoes);
+    document.getElementById("btnBuscar").addEventListener("click", buscarNome);
+
 });
 
 async function buscarTodasAnotacoes(){
@@ -41,28 +43,28 @@ async function buscarTodasAnotacoes(){
     if(anotacoes){
         const divLista = anotacoes.map(Dados => {
             return `<div class="item">
-                    <h1>Anotação</h1>
+                    <h1>Cliente</h1>
                     <p>${Dados.nome}</p>
                     <p>${Dados.email} </p>
                     <p>${Dados.tel}</p>
                     <p>${Dados.time}</p>
                     <p>${Dados.foto_usuario}</p>
-                    <p>${Dados.foto}</p>
-                   </div>`;
+                   </div>`
         });
         listagem(divLista.join(' '));
     } 
 }
 
 async function adicionarDados() {
-    let titulo = document.getElementById("titulo").value;
-    let categoria = document.getElementById("categoria").value;
-    let descricao = document.getElementById("descricao").value;
-    let data = document.getElementById("data").value;
+    let nome = document.getElementById("nome").value;
+    let email = document.getElementById("email").value;
+    let tel = document.getElementById("tel").value;
+    let time = document.getElementById("time").value;
+    let foto_usuario = document.getElementById("foto_usuario").value;
     const tx = await db.transaction('Dados', 'readwrite')
     const store = tx.objectStore('Dados');
     try {
-        await store.add({ titulo: titulo, categoria: categoria, descricao: descricao, data: data });
+        await store.add({ nome: nome, email: email, tel: tel, time: time, foto_usuario:foto_usuario });
         await tx.done;
         limparCampos();
         console.log('Registro adicionado com sucesso!');
@@ -79,12 +81,42 @@ function limparCampos() {
     document.getElementById("tel").value = '';
     document.getElementById("time").value = '';
     document.getElementById("foto_usuario").value = '';
-    document.getElementById("foto").value = '';
     document.getElementById('buscar').value = '';
-
 }
 
 function listagem(text){
     document.getElementById('resultados').innerHTML = text;
+}
+
+async function buscarNome() {
+    const buscarT = document.getElementById("buscarN").value;
+    if (!buscarT) {
+        console.log('Insira um nome');
+        return;
+    }
+
+    if (db == undefined) {
+        console.log("O banco de dados está fechado.");
+    }
+    const tx = await db.transaction('Dados', 'readonly');
+    const store = await tx.objectStore('Dados');
+    try {
+        const Dados = await store.get(buscarT);
+        if (Dados) {
+            const divDados = `
+                <div class="item">
+                    <h1>Cliente</h1>
+                    <p>${Dados.titulo}</p>
+                    <p>${Dados.data} </p>
+                    <p>${Dados.categoria}</p>
+                    <p>${Dados.descricao}</p>
+                </div>`;
+            listagem(divDados);
+        } else {
+            console.log(`Cliente com nome "${buscarN}" não encontrada🤔`);
+        }
+    } catch (error) {
+        console.error('Erro ao buscar cliente:', error);
+    }
 }
 
