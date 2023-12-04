@@ -3,12 +3,12 @@ import { openDB } from "idb";
 let db;
 async function criarDB(){
     try {
-        db = await openDB('banco', 2, {
+        db = await openDB('banco', 1, {
             upgrade(db, oldVersion, newVersion, transaction){
                 switch  (oldVersion) {
                     case 0:
                     case 1:
-                        const store = db.createObjectStore('dados', {
+                        const store = db.createObjectStore('dado', {
                             keyPath: 'nome'  //* A propriedade nome será o campo chave *//
 
                         });
@@ -18,7 +18,7 @@ async function criarDB(){
                 }
             }
         });
-        console.log("Banco de dados aberto!");
+        console.log("banco de dados aberto!");
     }catch (e) {
         console.log('Erro ao criar/abrir banco: ' + e.message);
     }

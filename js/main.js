@@ -14,6 +14,7 @@ if ('serviceWorker' in navigator) {
 //configurando as constraintes do video stream
 var constraints = { video: {facingMode: "user"}, audio: false };
 //capturando os elementos em tela
+
 const cameraView = document.querySelector("#camera--view"),
   cameraOutput = document.querySelector("#camera--output"),
   cameraTrigger = document.querySelector("#camera--trigger"),

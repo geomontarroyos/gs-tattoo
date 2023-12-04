@@ -19,7 +19,7 @@ maxAgeSeconds: 30 * 24 * 60 * 60,
 
 //indicando o cache de página
 warmStrategyCache({
-urls: ['/index.html','/tirarfoto.html', '/js/main.js', '/css/style.css','/js/db.js','/js/app.js', '/css/css.css','/css/estilo.css'  ,
+urls: ['/index.html','/' ,
 "https://fonts.googleapis.com/css?family=Poppins&display=swap"],
 strategy: pageCache,
 });
