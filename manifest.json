@@ -3,8 +3,8 @@
     "short_name": "GS-TATTOO",
     "icons": [
         {
-            "src": "img/cav.256.png",
-            "sizes": "256x256",
+            "src": "img/cav128.png",
+            "sizes": "128x128",
             "type": "image/png"
         },
 
