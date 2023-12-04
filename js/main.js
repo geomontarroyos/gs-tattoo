@@ -114,8 +114,8 @@ async function buscarTodosDados(){
                     <p>${dado.email} </p>
                     <p>${dado.tel}</p>
                     <p>${dado.time}</p>
-                    <p>${dado.foto_usuario}</p>
-                    <p>${dado.fototirada}</p>
+                    <img>${dado.foto_usuario}</img>
+                    <img>${dado.fototirada}</img>
                    </div>`
         });
         listagem(divLista.join(' '));
@@ -177,8 +177,8 @@ async function buscarNome() {
                     <p>${dado.email} </p>
                     <p>${dado.tel}</p>
                     <p>${dado.time}</p>
-                    <p>${dado.foto_usuario}</p>
-                    <p>${dado.fototirada}</p>
+                    <img>${dado.foto_usuario}</img>
+                    <img>${dado.fototirada}</img>
                 </div>`;
             listagem(divDado);
         } else {
