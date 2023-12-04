@@ -16,12 +16,12 @@
     
         {
             "src": "img/cav.256.png",
-            "sizes": "196x196",
+            "sizes": "256x256",
             "type": "image/png"
         },
         {
             "src": "img/cav.256.png",
-            "sizes": "196x196",
+            "sizes": "256x256",
             "type": "image/png",
             "purpose": "any maskable"
         }
