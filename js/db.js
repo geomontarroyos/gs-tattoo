@@ -66,7 +66,7 @@ async function adicionarDados() {
     const tx = await db.transaction('dado', 'readwrite')
     const store = tx.objectStore('dado');
     try {
-        await store.add({ nome: nome, email: email, tel: tel, time: time, foto_usuario:foto_usuario});
+        await store.add({ nome: nome, email: email, tel: tel, time: time, foto_usuario:foto_usuario, fototirada: fototirada });
         await tx.done;
         limparCampos();
         console.log('Registro adicionado com sucesso!');
