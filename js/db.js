@@ -101,11 +101,11 @@ async function buscarNome() {
     const tx = await db.transaction('dado', 'readonly');
     const store = await tx.objectStore('dado');
     try {
-        const dado = await store.get(buscarNome);
+        const dado = await store.get(buscarN);
         if (dado) {
             const divDado = `
                 <div class="item">
-                    <h1>Cliente</h1>
+                    <h3>Cliente</h3>
                     <p>${dado.nome}</p>
                     <p>${dado.email} </p>
                     <p>${dado.tel}</p>
