@@ -14,7 +14,6 @@
 <body>
   
 <div class="container">
-  <form name="cad_cliente" method="post" action="" enctype="multipart/form-data">
     <div class="row">
       <h1>Agendamento</h1>
       <div class="input-group">
@@ -58,6 +57,14 @@
       </div>
 
 <br/>
+
+<div class="row">
+  <h3>Termos e Condições</h3>
+ <div class="input-group">
+    <input id="terms" type="checkbox" required/>
+    <label for="terms">Em caso de falta, será cobrado uma multa 50% do valor da tatuagem.</label>
+  </div>
+</div>
   
     <div class="row">
       <div class="input-group">
@@ -65,7 +72,6 @@
         <button id="limp" type="reset">Limpar</button>
         <button id="btnCarregar">Mostrar</button>
       </div>
-  </form>
 </div>
   <h3>Buscar:</h3><input id="buscarN" type="text"/>
   <button id="btnBuscar" id="buscarN"><img src="img/icon.webp" width="20px" height="20px"></button>
