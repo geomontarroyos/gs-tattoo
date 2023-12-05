@@ -209,8 +209,8 @@ a{
 
 #camera--trigger, #camera--verso, #salvar {
  border: 0;
- width: 60px;
- height: 60px;
+ width: 30px;
+ height: 30px;
  display: inline-block;
  margin: 10px;
  cursor: pointer;
@@ -225,11 +225,22 @@ a{
   transform: scaleX(-1);
   filter: FlioH;
 }
+#camera--view, #camera--sensor, #camera--output{
+  width: 60%;
+  height: 60%;
+  text-align: center;
+  width: 300px;
+   justify-content: center;
+   align-items: center;
+ }
 .item{
  background-color: white;
  text-align: center;
  width: 300px;
- align: center;
   justify-content: center;
   align-items: center;
+}
+.item img{
+  width: 60%;
+  height: 60%;
 }
