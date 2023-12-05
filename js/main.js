@@ -98,7 +98,7 @@ async function buscarTodosDados(){
                     <p>${dado.email} </p>
                     <p>${dado.tel}</p>
                     <p>${dado.time}</p>
-                    <img src="${dado.foto_usuario}" alt="scocorro"/>
+                    <img src="${dado.foto_usuario}" alt="socorro"/>
                     <img src="${dado.fototirada}" alt="socorro"/>
                    </div>`
         });
