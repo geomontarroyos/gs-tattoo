@@ -48,22 +48,6 @@ cameraTrigger.onclick = function () {
 window.addEventListener("load", cameraStart, false);
 
 
-//Converta a imagem
-function convertImageToBase64(imageUrl, callback) {
-  var img = new Image();
-  img.crossOrigin = 'Anonymous';
-  img.onload = function() {
-      var canvas = document.createElement('canvas');
-      var ctx = canvas.getContext('2d');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0, img.width, img.height);
-      var dataURL = canvas.toDataURL('image/png');
-      callback(dataURL);
-  };
-  img.src = imageUrl;
-}
-
 import { openDB } from "idb";
 
 let db;
@@ -109,7 +93,7 @@ async function buscarTodosDados(){
     if(dados){
         const divLista = dados.map(dado => {
             return `<div class="item">
-                    <h1>Cliente</h1>
+                    <h3>Cliente</h3>
                     <p>${dado.nome}</p>
                     <p>${dado.email} </p>
                     <p>${dado.tel}</p>
@@ -148,7 +132,6 @@ function limparCampos() {
     document.getElementById("tel").value = '';
     document.getElementById("time").value = '';
     document.getElementById("foto_usuario").value = '';
-   // document.getElementById("fototirada").value = '';
 }
 
 function listagem(text){
